@@ -104,8 +104,60 @@ exit
 
 ### Bài 4: Tạo ConfigMap và Secret từ File
 Cách thực hiện: 
-- Tạo Secret từ file 
-- Tạo ConfigMap từ File 
-- Cấu hình nginx Pod xác thực từ Secret
-#### Tạo Secret từ File
-1. 
+- Tạo Secret từ file .htpasswd chứa user password
+- Tạo ConfigMap từ File nginx.conf chứa thông tin cấu hình nginx server
+- Cấu hình nginx Pod xác thực từ Secret và cấu hình từ configMap
+#### Tạo Secret từ file .htpasswd chứa user password
+1. Chuẩn bị file password
+```bash
+sudo apt-get update # Cập nhật gói
+apt install apache2-utils # Cài gói để tạo user:password
+htpasswd -c .htpasswd user
+ls -a
+cat .htpasswd
+```
+2. Tạo secret từ file
+```bash
+kubectl create secret generic nginx-htpasswd --from-file .htpasswd
+```
+3. Xem secret vừa tạo 
+```bash
+kubectl get secrets
+kubectl describe secrets nginx-htpasswd
+```
+#### Tạo ConfigMap từ File nginx.conf chứa thông tin cấu hình nginx server
+1. Kiêm tra file
+```bash
+vi nginx.conf
+cat nginx.conf
+```
+2. Tạo configmap lưu dữ cấu hình nginx từ file
+```bash
+kubectl create configmap generic nginx-config-file --from-file nginx.conf
+```
+3. Kiểm tra configMap vừa tạo
+```bash
+kubectl get configmap
+kubectl describe configmap nginx-config-file
+```
+
+#### Cấu hình nginx Pod xác thực từ Secret và cấu hình từ configMap
+1. Tạo file yaml chạy nginx pod
+```bash
+vi nginx-pod.yaml
+cat nginx-pod.yaml
+```
+2. Triển khai pod nginx từ file vừa tạo
+```bash
+kubectl apply -f nginx-pod.yaml
+```
+3. Kiểm tra ứng dụng nginx và các file xác thực, file cấu hình
+```bash
+kubectl get pods -o wide
+curl <nginx_pod_IP>
+curl -u user:test123 <nginx_pod_IP>
+```
+
+
+
+
