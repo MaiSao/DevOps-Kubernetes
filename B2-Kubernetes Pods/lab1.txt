@@ -1,3 +1,4 @@
+### Thao tác với kubectl
 1. Tạo pod với câu lệnh
 ```bash
 kubectl create -f pod.yaml
