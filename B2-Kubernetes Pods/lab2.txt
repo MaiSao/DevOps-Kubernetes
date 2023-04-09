@@ -1,0 +1,111 @@
+### Bài 1: Quản lý cấu hình ứng dụng sử dụng Env Variables
+1. Kiểm tra file configmap ví dụ
+```bash
+vi example-configMap.yaml
+```
+
+2. Tạo configmap bằng env variables
+```bash
+kubectl apply -f example-configMap.yaml
+kubectl get configmap 
+kubectl describe configmap player-pro-demo
+```
+3. Kiểm tra file secret ví dụ
+```bash
+vi example-secret.yaml
+```
+4. Tạo secret bằng env variables
+```bash
+kubectl apply -f example-secret.yaml
+kubectl get secret 
+kubectl describe secret example-secret
+```
+5. Kiểm tra file triển khai pod để chuyền configmap và secret
+```bash
+vi configmap-env-demo.yml
+```
+
+6. Triển khai Pod để chuyển configmap và secret vừa tạo vào container
+```bash
+kubectl apply -f configmap-env-demo.yml
+kubectl get pods
+```
+7. Exec vào pod vừa tạo để kiểm tra configmap và secret đã chuyền vào
+```bash
+kubectl exec configmap-env-demo -it -- sh
+echo $PLAYER_LIVES
+echo $SECRET_USERNAME
+printenv
+exit
+```
+
+### Bài 2: Quản lý cấu hình ứng dụng sử dụng Mount Volumes
+1. Kiểm tra pod đang tồn tại
+```bash
+kubectl get pods
+```
+2. Kiểm tra file configmap-vol-demo.yaml
+```bash
+vi configmap-vol-demo.yaml
+```
+3.  Tạo pod sử dụng volume mount từ file trên
+```bash
+kubectl apply -f configmap-vol-demo.yaml
+```
+4.  Exec vào pod vừa tạo để kiểm tra volume mount file
+```bash
+kubectl exec configmap-vol-demo -it -- sh
+cd /etc/config/configMap/
+ls
+cat user-interface.properties
+cat base.properties
+cd /etc/config/secret
+cat username
+cat password
+exit
+```
+
+### Bài 3: Quản lý cấu hình ứng dụng sử dụng Posix ConfigMap
+Đặt vấn đề: Khi ta muốn chuyển một danh sách biến vào pod mà không cần phải chỉ định cụ thể từng biến bao gồm name và value
+=> Ta sử dụng Posix ConfigMap.
+1. Kiểm tra file example-posix-configMap.yml cấu hình sử dụng Posix ConfigMap
+```bash
+vi example-posix-configMap.yml
+```
+2. Tạo Posix ConfigMap từ file example-posix-configMap.yml
+```bash
+kubectl apply -f example-posix-configMap.yml
+```
+3. Kiểm tra configmap vừa Tạo
+```bash
+kubectl get configmap
+kubectl describe configmap player-posix-demo
+```
+4. Kiểm tra file configmap-posix-demo.yml triển khai Pod sử dụng posix configMap
+```bash
+vi configmap-posix-demo.yml
+```
+5. Triển khai pod từ file configmap-posix-demo.yml
+```bash
+kubectl apply -f configmap-posix-demo.yml
+```
+6. Kiểm tra pod vừa tạo
+```bash
+kubectl describe pods configmap-posix-demo
+```
+7. Exec vào pod và kiểm tra Posix ConfigMap đã dược mount vào biến môi trường
+```bash
+kubectl get pods
+kubectl exec configmap-posix-demo -it  -- /bin/bash
+ls
+printenv
+exit
+```
+
+### Bài 4: Tạo ConfigMap và Secret từ File
+Cách thực hiện: 
+- Tạo Secret từ file 
+- Tạo ConfigMap từ File 
+- Cấu hình nginx Pod xác thực từ Secret
+#### Tạo Secret từ File
+1. 

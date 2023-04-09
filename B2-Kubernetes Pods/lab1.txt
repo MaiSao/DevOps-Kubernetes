@@ -1,0 +1,44 @@
+1. Tạo pod với câu lệnh
+```bash
+kubectl create -f pod.yaml
+```
+2. Dùng tùy chọn help để biết thêm thông tin về câu lệnh:
+```bash
+kubectl get --help
+```
+3. Lấy các api có sẵn kubectl hỗ trợ
+```bash
+kubectl api-resource
+```
+4. Lấy thông tin bằng tên đối tượng dưới dạng ngắn
+```bash
+kubectl get po
+kubectl get pods
+kubectl get pods test-node
+```
+5. Ta có thể chỉ định namespace để lấy đối tượng
+```bash
+kubectl get po -n kube-system
+```
+
+6. Sử dụng tùy chọn -o để chuẩn hóa đầu ra dưới dạng YAML or JSON
+```bash
+kubectl get pods test-node -o wide
+kubectl get pods test-node -o json
+kubectl get pods test-node -o yaml
+```
+7. Câu lệnh kubectl describe
+```bash
+kubectl describe pods test-pod 
+```
+8. Câu lệnh kubectl exec
+```bash
+kubectl exec test-pod -c nginx -- cat /etc/nginx/nginx.conf
+```
+
+9. Sử dụng Câu lệnh kubectl delete xóa đối tượng và kiểm tra lại
+```bash
+kubectl delete po test-pod
+kubectl get po
+```
+ 
