@@ -1,30 +1,30 @@
 ## Quản lý yêu cầu cấp phát tài nguyên
 ### Yêu cầu giới hạn cấp phát dưới
-1. Tạo file cấu hình request_limit.yaml
+1. Tạo file cấu hình request_limit.yml
 ```bash
-vi request_limit.yaml
+vi request_limit.yml
 ```
 2. Tạo pods với yêu cầu cấp phát dưới
 ```bash
-kubectl apply -f request_limit.yaml
+kubectl apply -f request_limit.yml
 kubectl get pods -o wide
 ```
 3. Sửa file cấu hình thay đổi yêu cầu cấp phát 
 ```bash
 top  # Kiểm tra tài nguyên cpu
-vi request_limit.yaml # Sửa yêu cầu cấp phát vượt khả năng cấp phát
-kubectl apply -f request_limit.yaml # Triển khai pods
-kubectl delete -f request_limit.yaml # Thu hồi tài nguyên
+vi request_limit.yml # Sửa yêu cầu cấp phát vượt khả năng cấp phát
+kubectl apply -f request_limit.yml # Triển khai pods
+kubectl delete -f request_limit.yml # Thu hồi tài nguyên
 ```
 ### Yêu cầu giới hạn tài nguyên
 
-1. Tạo file cấu hình resource_limit.yaml
+1. Tạo file cấu hình resource_limit.yml
 ```bash
-vi resource_limit.yaml
+vi resource_limit.yml
 ```
 2. Tạo pods với yêu cầu giới hạn tài nguyên
 ```bash
-kubectl apply -f resource_limit.yaml
+kubectl apply -f resource_limit.yml
 ```
 3. Kiểm tra pods vừa tạo
 ```bash

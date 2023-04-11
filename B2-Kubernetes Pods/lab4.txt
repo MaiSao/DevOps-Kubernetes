@@ -1,4 +1,71 @@
 ## Giám sát tình trạng containers
 ### Bài 1: Liveness và StartUp Probe
+#### Sử dụng Liveness
+1. Kiểm tra file chạy ứng dụng với Liveness Probe sử dụng command
+```bash
+vi liveness-hc.yml
+```
+2. Triển khai pod với file
+```bash
+kubectl apply -f liveness-hc.yml
+```
+3. Kiểm tra pods vừa tạo có hoạt động đúng cấu hình liveness probe
+```bash
+kubectl get pods -o wide
+kubectl describe pod liveness-probe
+```
+4. Chạy thêm pod với liveness probe sử dụng HTTP
+```bash
+vi liveness-hc.yml
+kubectl apply -f liveness-hc.yml
+```
+5. Kiểm tra lại pod vừa tạo
+```bash
+kubectl get pods -o wide
+kubectl describe pod liveness-probe
+curl <IP Pod>
+```
+
+#### Sử dụng StartUp Probe
+1. Kiểm tra file chạy ứng dụng với StartUp Probe
+```bash
+vi startup-hc.yml
+```
+2. Triển khai pod với file
+```bash
+kubectl apply -f startup-hc.yml
+```
+3. Kiểm tra lại pod
+```bash
+kubectl get pods -o wide
+# đợi 10-20s
+kubectl get pods -o wide
+```
 
 ### Bài 2: Liveness và Readiness Probe
+1. Kiểm tra file triển khai pod với Liveness và Readiness probe
+```bash
+vi readiness-hc.yml
+```
+2. Triển khai pod 
+```bash
+kubectl apply -f readiness-hc.yml
+```
+3. Kiểm tra lại pod vừa tạo
+```bash
+kubectl describe pod hc-readiness
+```
+4. Thay đổi readiness probe port thành 9999
+```bash
+vi readiness-hc.yml
+```
+5. Chạy lại pod và kiểm tra
+```bash
+kubectl delete -f readiness-hc.yml
+kubectl apply -f readiness-hc.yml
+```
+6. Xem pod thay đổi như thế nào
+```bash
+kubectl get pods -o wide
+kubectl describe pod hc-readiness
+```

@@ -1,0 +1,26 @@
+## Pods với Init containers
+### Tạo ứng dụng chạy trong pods sử dụng 2 init containers, ứng dụng chỉ chạy sau khi 2 init containers chạy thành công.
+1. Kiểm tra file
+```bash
+vi init-container.yml
+```
+2. Triển khai pods
+```bash
+kubectl apply -f init-container.yml
+```
+3. Kiểm tra pods thay đổi
+```bash
+kubectl get pods -o wide
+kubectl describe pod <pod_name>
+```
+4. Triển khai service để init container có thể khởi chạy thành công
+```bash
+vi initContainer-dependency-service.yml
+kubectl apply -f initContainer-dependency-service.yml
+kubectl get service
+```
+5. Kiểm tra lại Pods với init container
+```bash
+kubectl get pods -o wide
+kubectl describe pod <pod_name>
+```

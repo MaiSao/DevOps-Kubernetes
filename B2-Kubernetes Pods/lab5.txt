@@ -1,0 +1,44 @@
+## Self-healing pods
+### Sử dụng Pods restart policies
+#### Sử dụng Always pod restart policy
+1. Kiểm tra file
+```bash
+vi always-restart.yml
+```
+2. Triển khai pods
+```bash
+kubectl apply -f always-restart.yml
+```
+3. Kiểm tra pods thay đổi
+```bash
+kubectl get pods -o wide
+kubectl describe pod <pod_name>
+```
+#### Sử dụng OnFailure pod restart policy
+1. Kiểm tra file
+```bash
+vi onfailure-restart.yml
+```
+2. Triển khai pods
+```bash
+kubectl apply -f onfailure-restart.yml
+```
+3. Kiểm tra pods thay đổi
+```bash
+kubectl get pods -o wide
+kubectl describe pod <pod_name>
+```
+#### Sử dụng Never pod restart policy
+1. Kiểm tra file
+```bash
+vi never-restart.yml
+```
+2. Triển khai pods
+```bash
+kubectl apply -f never-restart.yml
+```
+3. Kiểm tra pods thay đổi
+```bash
+kubectl get pods -o wide
+kubectl describe pod <pod_name>
+```

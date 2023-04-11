@@ -2,22 +2,22 @@
 ### Bài 1: Quản lý cấu hình ứng dụng sử dụng Env Variables
 1. Kiểm tra file configmap ví dụ
 ```bash
-vi example-configMap.yaml
+vi example-configMap.yml
 ```
 
 2. Tạo configmap bằng env variables
 ```bash
-kubectl apply -f example-configMap.yaml
+kubectl apply -f example-configMap.yml
 kubectl get configmap 
 kubectl describe configmap player-pro-demo
 ```
 3. Kiểm tra file secret ví dụ
 ```bash
-vi example-secret.yaml
+vi example-secret.yml
 ```
 4. Tạo secret bằng env variables
 ```bash
-kubectl apply -f example-secret.yaml
+kubectl apply -f example-secret.yml
 kubectl get secret 
 kubectl describe secret example-secret
 ```
@@ -45,13 +45,13 @@ exit
 ```bash
 kubectl get pods
 ```
-2. Kiểm tra file configmap-vol-demo.yaml
+2. Kiểm tra file configmap-vol-demo.yml
 ```bash
-vi configmap-vol-demo.yaml
+vi configmap-vol-demo.yml
 ```
 3.  Tạo pod sử dụng volume mount từ file trên
 ```bash
-kubectl apply -f configmap-vol-demo.yaml
+kubectl apply -f configmap-vol-demo.yml
 ```
 4.  Exec vào pod vừa tạo để kiểm tra volume mount file
 ```bash
@@ -145,12 +145,12 @@ kubectl describe configmap nginx-config-file
 #### Cấu hình nginx Pod xác thực từ Secret và cấu hình từ configMap
 1. Tạo file yaml chạy nginx pod
 ```bash
-vi nginx-pod.yaml
-cat nginx-pod.yaml
+vi nginx-pod.yml
+cat nginx-pod.yml
 ```
 2. Triển khai pod nginx từ file vừa tạo
 ```bash
-kubectl apply -f nginx-pod.yaml
+kubectl apply -f nginx-pod.yml
 ```
 3. Kiểm tra ứng dụng nginx và các file xác thực, file cấu hình
 ```bash
