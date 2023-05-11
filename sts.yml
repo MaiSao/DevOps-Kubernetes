@@ -40,7 +40,7 @@ spec:
           mountPath: /usr/share/nginx/html
   volumeClaimTemplates:
   - metadata:
-      name: my-hostpath-volume
+      name: www
     spec:
       storageClassName: manual
       accessModes: ["ReadWriteOnce"]
