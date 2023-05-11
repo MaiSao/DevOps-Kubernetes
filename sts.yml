@@ -38,15 +38,15 @@ spec:
         volumeMounts:
         - name: www
           mountPath: /usr/share/nginx/html
-volumeClaimTemplates:
-- metadata:
-    name: my-hostpath-volume
-  spec:
-    storageClassName: manual
-    accessModes: ["ReadWriteOnce"]
-    resources:
-      requests:
-        storage: 5Gi
-    selector:
-      matchLabels:
-        type: local
+  volumeClaimTemplates:
+  - metadata:
+      name: my-hostpath-volume
+    spec:
+      storageClassName: manual
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 5Gi
+      selector:
+        matchLabels:
+          type: local
