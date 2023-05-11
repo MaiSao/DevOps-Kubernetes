@@ -1,0 +1,3 @@
+Install k9s ubuntu:
+curl -sS https://webi.sh/k9s | sh
+export KUBECONFIG=$HOME/.kube/config
