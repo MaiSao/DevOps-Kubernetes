@@ -9,7 +9,7 @@ spec:
       args:
         - /bin/sh
         - -c
-        - touch /tmp/healthcheck; sleep 60; rm -rf /tmp/healthcheck; sleep 600
+        - touch /tmp/healthcheck; sleep 30; rm -rf /tmp/healthcheck; sleep 600
       livenessProbe:
         exec:
           command:
@@ -30,6 +30,6 @@ spec:
       livenessProbe:
         httpGet:
           path: /
-          port: 8080
+          port: 80
         initialDelaySeconds: 3
         periodSeconds: 3

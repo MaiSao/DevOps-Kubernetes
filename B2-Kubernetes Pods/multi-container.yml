@@ -11,7 +11,7 @@ spec:
         - name: shared-data
           mountPath: /pod-data
       command: ["/bin/sh"]
-      args: ["-c", "echo Hello from the Secondary container > /pod-data/index.html"]
+      args: ["-c", "echo Hello from the Secondary container > /pod-data/index.html; sleep 600"]
     - name: nginx-container
       image: nginx
       volumeMounts:
