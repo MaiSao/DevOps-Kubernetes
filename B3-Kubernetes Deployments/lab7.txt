@@ -24,3 +24,6 @@ kubectl get pods --show-labels
 #### B5. Restart deployment tạo ra
 
 #### B6. Scale in/out deployment tạo ra.
+```bash
+kubectl scale deployment <deployment name> -n <namespace> --replicas=3
+```
