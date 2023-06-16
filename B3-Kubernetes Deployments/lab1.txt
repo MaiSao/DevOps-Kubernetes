@@ -1,1 +1,6 @@
-ECHO is on.
+### Start with create k8s cluster
+```bash
+minikube start --kubernetes-version=1.21.5 --driver=docker --node=2 --cpus=2 --memory=2048 --cni=calico
+```
+
+###  
