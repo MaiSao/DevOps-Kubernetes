@@ -1,1 +1,7 @@
-ECHO is on.
+## Tạo static Pods
+
+### B1. Tạo static pods bằng cách ssh vào node và tạo file static-pod.yml trong thư mục */etc/kubernetes/manifests/*
+
+### B2. Kiểm tra xem pods vừa tạo đã lên chưa ?
+
+### B3. Sử dụng static pods khi nào ?

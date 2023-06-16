@@ -1,1 +1,5 @@
-ECHO is on.
+## Triển khai Daemonset
+
+### B1. Triển khai Daemonset bằng file *daemonset.yml*
+### B2. Kiểm tra các Pods được tạo ra bởi Daemonset
+### B3. Describe daemonset vừa tạo và describe các pod của daemonset

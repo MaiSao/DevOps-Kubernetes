@@ -1,1 +1,26 @@
-ECHO is on.
+## Deployments
+
+### Triển khai ứng dụng bằng Deployments
+
+#### B1. Triển khai ứng dụng bằng cách apply file 'deployment.yml'
+
+#### B2. Kiểm tra deployment vừa Tạo
+```bash
+kubectl rollout status deployment.apps/chef-server
+kubectl describe deployment.apps/chef-server
+```
+
+#### B3. Kiểm tra replicaset controller tạo ra
+```bash
+kubectl get rs
+```
+
+#### B4. Kiểm tra labels tạo ra cho Pod của deployment
+
+```bash
+kubectl get pods --show-labels
+```
+
+#### B5. Restart deployment tạo ra
+
+#### B6. Scale in/out deployment tạo ra.

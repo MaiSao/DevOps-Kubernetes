@@ -1,1 +1,7 @@
-ECHO is on.
+## Replicaset
+
+### B1. Tạo pods sử dụng Replicaset bằng file *replicaset.yml*
+
+### B2. Tạo pods bằng file *replicaSet_and_barePods.yml*
+
+### B3. So sánh đánh giá các pods vừa tạo với nhau ?

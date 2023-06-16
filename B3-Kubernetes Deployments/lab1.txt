@@ -1,10 +1,40 @@
-### Start with create k8s cluster
+## Khởi tạo và một số lệnh tương tác
+### Khởi tạo cụm K8s phiên bản 1.21.5 có 2 node (1 master + 1 worker) bằng minikube
 ```bash
 minikube start --kubernetes-version=1.21.5 --driver=docker --nodes=2 --cpus=2 --memory=2048 --cni=calico --container-runtime=containerd -p star
 ```
+### Kiểm tra cụm đã lên
+```bash
+minikube profile list
+minikube status -p star
+kubectl get no -o wide
+```
 
-### Ssh to node
+### Cách ssh vào node
 ```bash
 minikube profile list
 minikube ssh -p star -n <node name>
 ```
+### Thực hành
+### Bài 1 Chạy pod lập lịch
+
+#### B1. Kiểm tra *file pod-scheduling.yaml*
+#### B1. Tạo pod với file *pod-scheduling.yaml*
+
+#### B2. Kiểm tra các pod vừa tạo đã Running chưa ? Tại sao Pending ?
+
+#### B3. Kiểm tra describe các pod vừa tạo để tìm nguyên nhân
+
+### Bài 2 Khắc phục lỗi để pod chạy lên
+#### B1. Kiểm tra node
+
+#### B2. Kiểm tra node với labels
+```bash
+kubectl get no --show-labels
+```
+#### B3. Gán labels cho node
+```bash
+kubectl label nodes <node name> "disktype=ssd"
+kubectl get nodes -l "disktype=ssd"
+```
+#### B4. Kiểm tra lại pod đã chạy chưa ?

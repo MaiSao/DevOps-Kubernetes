@@ -1,1 +1,7 @@
-ECHO is on.
+## Node Affinity
+
+### B1. Tạo pods sử dụng Node Affinity bằng file *node-affinity.yml*
+
+### B2. Đánh giá pods vừa tạo ?
+
+### B3. Tại sao lại sử dụng Node Affinity ? Sử dụng khi nào ?

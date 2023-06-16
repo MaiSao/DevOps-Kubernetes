@@ -1,1 +1,5 @@
-ECHO is on.
+## Scaling sử dụng Replication Controller
+
+### B1. Tạo pods sử dụng file *replication_controller.yml*
+
+### B2. Đánh giá pods vừa tạo ?
