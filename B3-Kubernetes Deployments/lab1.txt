@@ -1,6 +1,10 @@
 ### Start with create k8s cluster
 ```bash
-minikube start --kubernetes-version=1.21.5 --driver=docker --node=2 --cpus=2 --memory=2048 --cni=calico
+minikube start --kubernetes-version=1.21.5 --driver=docker --nodes=2 --cpus=2 --memory=2048 --cni=calico --container-runtime=containerd -p star
 ```
 
-###  
+### Ssh to node
+```bash
+minikube profile list
+minikube ssh -p star -n <node name>
+```
