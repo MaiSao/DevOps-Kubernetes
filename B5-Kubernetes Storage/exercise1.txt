@@ -1,72 +1,4 @@
-## Quản lý cấu hình ứng dụng
-### Bài 1: Quản lý cấu hình ứng dụng sử dụng Env Variables
-1. Kiểm tra file configmap ví dụ
-```bash
-vi example-configMap.yml
-```
-
-2. Tạo configmap bằng env variables
-```bash
-kubectl apply -f example-configMap.yml
-kubectl get configmap 
-kubectl describe configmap player-pro-demo
-```
-3. Kiểm tra file secret ví dụ
-```bash
-vi example-secret.yml
-```
-4. Tạo secret bằng env variables
-```bash
-kubectl apply -f example-secret.yml
-kubectl get secret 
-kubectl describe secret example-secret
-```
-5. Kiểm tra file triển khai pod để chuyền configmap và secret
-```bash
-vi configmap-env-demo.yml
-```
-
-6. Triển khai Pod để chuyển configmap và secret vừa tạo vào container
-```bash
-kubectl apply -f configmap-env-demo.yml
-kubectl get pods
-```
-7. Exec vào pod vừa tạo để kiểm tra configmap và secret đã chuyền vào
-```bash
-kubectl exec configmap-env-demo -it -- sh
-echo $PLAYER_LIVES
-echo $SECRET_USERNAME
-printenv
-exit
-```
-
-### Bài 2: Quản lý cấu hình ứng dụng sử dụng Mount Volumes
-1. Kiểm tra pod đang tồn tại
-```bash
-kubectl get pods
-```
-2. Kiểm tra file configmap-vol-demo.yml
-```bash
-vi configmap-vol-demo.yml
-```
-3.  Tạo pod sử dụng volume mount từ file trên
-```bash
-kubectl apply -f configmap-vol-demo.yml
-```
-4.  Exec vào pod vừa tạo để kiểm tra volume mount file
-```bash
-kubectl exec configmap-vol-demo -it -- sh
-cd /etc/config/configMap/
-ls
-cat user-interface.properties
-cat base.properties
-cd /etc/config/secret
-cat username
-cat password
-exit
-```
-
-### Bài 3: Quản lý cấu hình ứng dụng sử dụng Posix ConfigMap
+### Bài 1: Quản lý cấu hình ứng dụng sử dụng Posix ConfigMap
 Đặt vấn đề: Khi ta muốn chuyển một danh sách biến vào pod mà không cần phải chỉ định cụ thể từng biến bao gồm name và value
 => Ta sử dụng Posix ConfigMap.
 1. Kiểm tra file example-posix-configMap.yml cấu hình sử dụng Posix ConfigMap
@@ -103,7 +35,7 @@ printenv
 exit
 ```
 
-### Bài 4: Tạo ConfigMap và Secret từ File
+### Bài 2: Tạo ConfigMap và Secret từ File
 Cách thực hiện: 
 - Tạo Secret từ file .htpasswd chứa user password
 - Tạo ConfigMap từ File nginx.conf chứa thông tin cấu hình nginx server
@@ -158,7 +90,3 @@ kubectl get pods -o wide
 curl <nginx_pod_IP>
 curl -u user:test123 <nginx_pod_IP>
 ```
-
-
-
-

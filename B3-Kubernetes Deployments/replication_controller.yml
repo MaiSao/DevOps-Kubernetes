@@ -3,7 +3,7 @@ kind: ReplicationController
 metadata:
   name: alipne-box-replicationcontroller
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     app: alipne-box
   template:

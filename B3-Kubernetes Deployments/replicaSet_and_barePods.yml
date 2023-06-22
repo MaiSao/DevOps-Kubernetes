@@ -16,7 +16,7 @@ kind: Pod
 metadata:
   name: mypod2
   labels:
-    tier: frontend
+    tier: backend
 spec:
   containers:
   - name: application2

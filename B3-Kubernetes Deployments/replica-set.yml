@@ -9,7 +9,7 @@ spec:
   replicas: 3
   selector:
     matchExpressions:
-      - {key: tier, operator: In, values: [frontend]}
+      - {key: tier, operator: In, values: [frontend, backend]}
   template:
     metadata:
       labels:
