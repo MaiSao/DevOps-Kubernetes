@@ -13,9 +13,9 @@ spec:
     ports:
     - containerPort: 80
       protocol: TCP
-    volumes:
-    - name: html
-      gitRepo:
-        repository: https://github.com/luksa/kubia-website-example.git
-        revision: master
-        directory:
+  volumes:
+  - name: html
+    gitRepo:
+      repository: https://github.com/luksa/kubia-website-example.git
+      revision: master
+      directory: .
