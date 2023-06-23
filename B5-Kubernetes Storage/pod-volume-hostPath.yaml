@@ -4,8 +4,9 @@ metadata:
   name: test-pd
 spec:
   containers:
-  - image: k8s.gcr.io/test-webserver
+  - image: alpine
     name: test-container
+    command: ["sleep", "3600"]
     volumeMounts:
     - mountPath: /test-pd
       name: test-volume
