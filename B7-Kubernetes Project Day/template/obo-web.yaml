@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: obo-web
+  name: obo-web
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: obo-web
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: obo-web
+    spec:
+      containers:
+        - image: saocd/techmaster-obo-web:1.2.0
+          name: techmaster-obo-web
+          envFrom:
+          - configMapRef:
+              name: obo-web-config
+          resources: {}
+status: {}
